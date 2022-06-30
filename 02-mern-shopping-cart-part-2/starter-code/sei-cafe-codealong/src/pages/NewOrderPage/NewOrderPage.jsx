@@ -50,8 +50,18 @@ export default function NewOrderPage({ user, setUser }) {
       const newItem = await ordersAPI.addItemToCart(itemId)
       // 2. Update the cart state with the updated cart received from the server
       setCart([ ...cart, newItem])
-    
   }
+  /*--- Event Handlers --- */
+// async function handleAddToOrder(itemId) {
+//   const updatedCart = await ordersAPI.addItemToCart(itemId);
+//   setCart(updatedCart);
+// }
+
+// Add this function
+async function handleChangeQty(itemId, newQty) {
+  const updatedCart = await ordersAPI.setItemQtyInCart(itemId, newQty);
+  setCart(updatedCart);
+}
 
   return (
     <main className="NewOrderPage">
